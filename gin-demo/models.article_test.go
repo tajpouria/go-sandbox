@@ -2,7 +2,7 @@ package main
 
 import "testing"
 
-func testGetAllArticles(t *testing.T) {
+func TestGetAllArticles(t *testing.T) {
 	artlist := getAllArticles()
 
 	if len(artlist) != len(articleList) {

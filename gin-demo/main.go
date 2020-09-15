@@ -6,6 +6,7 @@ import (
 
 var router *gin.Engine
 
+// This is a comment
 func main() {
 	router = gin.Default()
 	router.LoadHTMLGlob("templates/*")
