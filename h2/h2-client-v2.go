@@ -12,17 +12,16 @@ import (
 	"golang.org/x/net/http2"
 )
 
-const url = "https://0.0.0.0:8080"
+const url = "https://127.0.0.1:8080"
 
 var httpVersion = flag.Int("version", 2, "HTTP version")
 
 func main() {
 	flag.Parse()
-	fmt.Println(*httpVersion)
 
 	client := &http.Client{}
 
-	caCert, err := ioutil.ReadFile("server/server.crt")
+	caCert, err := ioutil.ReadFile("secret/server.crt")
 
 	if err != nil {
 		log.Fatalf("Reading server certificate: %s", err)
@@ -59,6 +58,6 @@ func main() {
 		log.Fatalf("Failed to read response body: %s", err)
 	}
 
-	fmt.Printf("Go response body: %s %n %s\n",
+	fmt.Printf("Got response %d: %s %s\n",
 		resp.StatusCode, resp.Proto, string(body))
 }
